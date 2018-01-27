@@ -11,10 +11,6 @@
   </head>
   <body>
     <% if current_user %>
-      <ul class="nav navbar-nav">
-        <li><%= link_to "プロフィール",  edit_user_path(current_user.id) %></li>
-        <li><%= link_to "ログアウト",  destroy_user_session_path, method: :delete %></li>
-      </ul>
     <% end %>
     <%= yield %>
   </body>
