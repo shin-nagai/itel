@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Itel</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Oriapp</title>
+      <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
+    </meta>
   </head>
-
   <body>
+    <% if current_user %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "プロフィール",  edit_user_path(current_user.id) %></li>
+        <li><%= link_to "ログアウト",  destroy_user_session_path, method: :delete %></li>
+      </ul>
+    <% end %>
     <%= yield %>
   </body>
 </html>

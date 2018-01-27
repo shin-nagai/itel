@@ -11,6 +11,28 @@
     </div>
   <% end %>
 
+  <div class="field">
+     <%= form_for @reservation do |f| %>
+       <label class="control-label" for="">荷物数</label>
+       <select name="example">
+         <option value="選択肢1">選択肢のサンプル1</option>
+         <option value="選択肢2">選択肢のサンプル2</option>
+         <option value="選択肢3">選択肢のサンプル3</option>
+         <option value="選択肢4">選択肢のサンプル4</option>
+         <option value="選択肢5">選択肢のサンプル5</option>
+      </select>
+
+       <label class="control-label" for="">チェックイン</label>
+       <%= f.datetime_select :startdate, {}, class: 'form-control' %>
+
+       <label class="control-label" for="">チェックアウト</label>
+       <%= f.datetime_select :enddate, {}, class: 'form-control' %>
+
+     <% end %>
+
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>
