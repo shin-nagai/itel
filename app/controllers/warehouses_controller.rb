@@ -1,15 +1,27 @@
 class WarehousesController < ApplicationController
-  before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
+   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
 
-  # GET /warehouses
-  # GET /warehouses.json
-  def index
-    @warehouses = Warehouse.all
-  end
-
+   # GET /warehouses
+   # GET /warehouses.json
+   def index
+      @warehouses = Warehouse.all
+      @hash = Gmaps4rails.build_markers(@warehouses) do |warehouse, marker|
+        marker.lat warehouse.latitude
+        marker.lng warehouse.longitude
+        # marker.infowindow warehouse.description
+        marker.json({name: warehouse.name})
+      end
+   end
   # GET /warehouses/1
   # GET /warehouses/1.json
   def show
+     @warehouses = Warehouse.find(params[:id])
+     @hash = Gmaps4rails.build_markers(@warehouses) do |warehouse, marker|
+      marker.lat warehouse.latitude
+      marker.lng warehouse.longitude
+      # marker.infowindow warehouse.description
+      marker.json({name: warehouse.name})
+     end
   end
 
   # GET /warehouses/new
