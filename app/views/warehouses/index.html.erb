@@ -20,7 +20,7 @@
 </table> -->
 
 <div style='width:  375px;'>
-  <div id="map" style='width: 375px; height: 667px;'></div>
+  <div id="map" style='width: 375px; height: 600px;'></div>
 </div>
 
 <script type="text/javascript">
@@ -30,6 +30,25 @@
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
     });
+
+    Gmaps.store = {}
+    Gmaps.store.markers = markers.map(function(m) {
+      marker = handler.addMarker(m);
+      marker.serviceObject.set('id', m.id);
+      marker.serviceObject.set('infowindow', m.infowindow);
+      return marker;
+   });
+
+      google.maps.event.addListener(handler.getMap(), "open", function(id) {
+  $.each(Gmaps.store.markers, function() {
+    if (this.serviceObject.id == id) {
+      infowindow = new google.maps.InfoWindow({
+        content: this.serviceObject.infowindow
+      });
+      infowindow.open(this.serviceObject.map, this.serviceObject);
+    }
+  });
+});
 </script>
 
 <br>

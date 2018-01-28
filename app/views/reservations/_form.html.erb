@@ -15,11 +15,11 @@
      <%= form_for @reservation do |f| %>
        <label class="control-label" for="">荷物数</label>
        <select name="example">
-         <option value="選択肢1">選択肢のサンプル1</option>
-         <option value="選択肢2">選択肢のサンプル2</option>
-         <option value="選択肢3">選択肢のサンプル3</option>
-         <option value="選択肢4">選択肢のサンプル4</option>
-         <option value="選択肢5">選択肢のサンプル5</option>
+         <option value="選択肢1">冷蔵庫 x 1</option>
+         <option value="選択肢2">冷蔵庫 x 2</option>
+         <option value="選択肢3">冷蔵庫 x 3</option>
+         <option value="選択肢4">冷蔵庫 x 4</option>
+         <option value="選択肢5">冷蔵庫 x 1000</option>
       </select>
 
        <label class="control-label" for="">チェックイン</label>
@@ -34,6 +34,8 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form_for @reservation do |f| %>
+    <%= f.submit "予約する", class: "" %>
+    <% end %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-   belongs_to :user
-   has_many :reservations, through: :users
+   has_many :items_users
+   has_many :users, through: :items_users
 
    mount_uploader :image, ImageUploader
 end

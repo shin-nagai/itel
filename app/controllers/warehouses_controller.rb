@@ -9,6 +9,8 @@ class WarehousesController < ApplicationController
         marker.lat warehouse.latitude
         marker.lng warehouse.longitude
         # marker.infowindow warehouse.description
+        marker.infowindow render_to_string( partial: "warehouses/infowindow",
+                                    locals: { warehouse: warehouse} )
         marker.json({name: warehouse.name})
       end
    end
@@ -16,6 +18,17 @@ class WarehousesController < ApplicationController
   # GET /warehouses/1.json
   def show
      @warehouses = Warehouse.find(params[:id])
+     @hash = Gmaps4rails.build_markers(@warehouses) do |warehouse, marker|
+      marker.lat warehouse.latitude
+      marker.lng warehouse.longitude
+      # marker.infowindow warehouse.description
+      marker.json({name: warehouse.name})
+      @reservation = Reservation.new
+     end
+  end
+
+  def done
+     @warehouse = Warehouse.limit(1).order("created_at DESC")
      @hash = Gmaps4rails.build_markers(@warehouses) do |warehouse, marker|
       marker.lat warehouse.latitude
       marker.lng warehouse.longitude
@@ -37,16 +50,15 @@ class WarehousesController < ApplicationController
   # POST /warehouses.json
   def create
     @warehouse = Warehouse.new(warehouse_params)
-
     respond_to do |format|
       if @warehouse.save
-        format.html { redirect_to @warehouse, notice: 'Warehouse was successfully created.' }
+        format.html { redirect_to :action=>'done', notice: 'Warehouse was successfully created.' }
         format.json { render :show, status: :created, location: @warehouse }
       else
         format.html { render :new }
         format.json { render json: @warehouse.errors, status: :unprocessable_entity }
       end
-    end
+   end
   end
 
   # PATCH/PUT /warehouses/1
@@ -81,6 +93,7 @@ class WarehousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def warehouse_params
-      params.fetch(:warehouse, {})
+      params.require(:warehouse).permit(:name, :adress, :price)
     end
+
 end

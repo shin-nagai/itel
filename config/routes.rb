@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'root/index'
+  get 'done' => 'warehouses#done'
   root to: 'root#index'
 
    devise_for :users

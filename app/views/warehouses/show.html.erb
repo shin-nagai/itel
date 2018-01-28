@@ -12,6 +12,24 @@
       handler.fitMapToBounds();
     });
 </script>
+<%= @warehouse.name %>
+  <div class="field">
+     <%= form_for @reservation do |f| %>
+      <%= f.text_field :warehouse_id, value: "#{params['id']}", class: 'hidden' %>
+       <label class="control-label" for="">荷物数</label>
+       <label class="control-label" for="">チェックイン</label>
+       <!-- <%= date_field_tag :startdate, {}, class: 'form-control' %> -->
+       <%= f.datetime_select :start, {}, class: 'form-control' %>
 
-<%= link_to '編集する', edit_warehouse_path(@warehouse) %> |
+       <label class="control-label" for="">チェックアウト</label>
+       <!-- <%= date_field_tag :enddate, {}, class: 'form-control' %> -->
+       <%= f.datetime_select :end, {}, class: 'form-control' %>
+
+      <%= f.submit "予約する", class: 'form-control' %>
+     <% end %>
+
+  </div>
+
+
+<!-- <%= link_to '編集する', edit_warehouse_path(@warehouse) %> | -->
 <%= link_to '戻る', warehouses_path %>
