@@ -24,4 +24,14 @@ class User::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  after_filter :flash_wo_kesuyo, only: [:create, :destory]
+
+protected
+def flash_wo_kesuyo
+  if flash[:notice].present?
+    flash.delete(:notice)
+  end
+end
+
 end
