@@ -62,3 +62,6 @@ end
 gem "gmaps4rails"
 gem "geocoder"
 gem 'pry-rails'
+
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'

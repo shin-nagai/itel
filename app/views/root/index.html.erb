@@ -1,23 +1,21 @@
 <h1 align="center">アイテル</h1>
 <p align="center">そこの倉庫空いてる？？</p>
 
-<p align="center">物を預ける</p>
-<div class="button_wrapper">
-<%= link_to 'ユーザー登録', '/users/sign_up', class: 'square_btn' %>
+<br>
+<div class="center">
+   <button type="button" class="btn btn-warning">
+      <%= link_to 'モノを預ける', '/users/sign_up' %>
+   </button>
 </div>
 
-<div class="button_wrapper">
+<!-- <div class="btn btn-warning">
 <%= link_to 'ログアウト', '/users/sign_out', method: :delete %>
 </div>
-
-<p align="center">倉庫を提供する</p>
-<div class="button_wrapper">
-<%= link_to 'クライアント登録', '/warehouses/new', class: 'square_btn' %>
-</div>
-
-
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default">Left</button>
-  <button type="button" class="btn btn-default">Middle</button>
-  <button type="button" class="btn btn-default">Right</button>
+-->
+<br>
+<br>
+<div class="center">
+   <button class="btn btn-warning">
+      <%= link_to '倉庫を提供する', '/warehouses/new'%>
+   </button>
 </div>
