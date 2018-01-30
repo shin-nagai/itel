@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
   # GET /reservations.json
   def index
     @reservations = Reservation.all
+    @warehouses = Warehouse.all
   end
 
   # GET /reservations/1
@@ -28,7 +29,7 @@ class ReservationsController < ApplicationController
     starttime = @reservation.change_start(params)
     endtime = @reservation.change_end(params)
     respond_to do |format|
-      if Reservation.create(start: starttime, end: endtime, user_id: current_user.id, item_id: 1, warehouse_id: params.require(:reservation)['warehouse_id']) 
+      if Reservation.create(start: starttime, end: endtime, user_id: current_user.id, item_id: 1, warehouse_id: params.require(:reservation)['warehouse_id'])
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else

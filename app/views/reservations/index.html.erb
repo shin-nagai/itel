@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Reservations</h1>
+<h1>予約一覧</h1>
 
 <table>
   <thead>
@@ -16,10 +16,25 @@
         <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
         <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="..." alt="...">
+            <div class="caption">
+              <h3><%= reservation.warehouse.name %></h3>
+              <p>...</p>
+              <p>
+                  <%= link_to '詳細へ', reservation , class: "btn btn-primary", role: "button" %>
+                  <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-primary", role: "button" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Reservation', new_reservation_path %>
+<%= link_to 'さらに予約する', new_reservation_path %>
