@@ -12,17 +12,11 @@
       handler.fitMapToBounds();
     });
 </script>
-<div class="panel panel-default">
-   <div class="panel-body">
-      <label class="control-label" for="">倉庫名：<%= @warehouse.name %></label>
-   </div>
-</div>
-
+<%= @warehouse.name %>
   <div class="field">
      <%= form_for @reservation do |f| %>
       <%= f.text_field :warehouse_id, value: "#{params['id']}", class: 'hidden' %>
-       <!-- <label class="control-label" for="">荷物数</label> -->
-       <br>
+       <label class="control-label" for="">荷物数</label>
        <label class="control-label" for="">チェックイン</label>
        <!-- <%= date_field_tag :startdate, {}, class: 'form-control' %> -->
        <%= f.datetime_select :start, {}, class: 'form-control' %>
