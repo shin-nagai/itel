@@ -23,9 +23,9 @@
           <div class="thumbnail">
             <img src="" alt="">
             <div class="caption wrapper-field">
-              <h3>倉庫名：<%= reservation.warehouse.name %></h3>
-              <p>チェックイン：<%= reservation.start %></p>
-              <p>チェックアウト<%= reservation.end %></p>
+              <h4>倉庫名：<%= reservation.warehouse.name %></h4>
+              <p>チェックイン：<%= reservation.start.strftime("%Y年%m月%d日 %H時%M分") %></p>
+              <p>チェックアウト<%= reservation.end.strftime("%Y年%m月%d日 %H時%M分") %></p>
               <p>
                   <%= link_to '詳細へ', reservation , class: "btn btn-warning form-control", role: "button" %>
                </p>

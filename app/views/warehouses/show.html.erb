@@ -15,7 +15,8 @@
     });
 </script>
   <div class="wrapper-field">
-     <h2>倉庫名：<%= @warehouse.name %></h2>
+     <h4>倉庫名：<%= @warehouse.name %></h4>
+     <br>
      <%= form_for @reservation do |f| %>
       <%= f.text_field :warehouse_id, value: "#{params['id']}", class: 'hidden' %>
        <!-- <label class="control-label" for="">荷物数</label> -->
