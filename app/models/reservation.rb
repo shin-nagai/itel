@@ -17,4 +17,8 @@ class Reservation < ApplicationRecord
       time = endtime['end(1i)']+'-'+endtime['end(2i)']+'-'+endtime['end(3i)']+' '+endtime['end(4i)']+':'+endtime['end(5i)']
       return endtime=DateTime.parse(time)
    end
+
+   class Item < ActiveRecord::Base
+      mount_uploader :image, ImageUploader
+   end
 end

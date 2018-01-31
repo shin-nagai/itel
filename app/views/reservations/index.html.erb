@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>予約一覧</h1>
+<div class="wrapper-field">
+   <h1>予約一覧</h1>
+</div>
 
 <table>
   <thead>
@@ -19,14 +21,18 @@
       <div class="row">
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
-            <img src="..." alt="...">
-            <div class="caption">
-              <h3><%= reservation.warehouse.name %></h3>
-              <p>...</p>
+            <img src="" alt="">
+            <div class="caption wrapper-field">
+              <h3>倉庫名：<%= reservation.warehouse.name %></h3>
+              <p>チェックイン：<%= reservation.start %></p>
+              <p>チェックアウト<%= reservation.end %></p>
               <p>
-                  <%= link_to '詳細へ', reservation , class: "btn btn-primary", role: "button" %>
-                  <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-primary", role: "button" %>
+                  <%= link_to '詳細へ', reservation , class: "btn btn-warning form-control", role: "button" %>
+               </p>
+               <p>
+                  <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-warning form-control", role: "button" %>
               </p>
+              <br>
             </div>
           </div>
         </div>

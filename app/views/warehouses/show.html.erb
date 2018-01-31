@@ -1,8 +1,10 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <div style='width: 375px;'>
   <div id="map" style='width: 375px; height: 300px;'></div>
 </div>
+
+<!-- <div id="map" class="img-responsive"></div> -->
 
 <script type="text/javascript">
     handler = Gmaps.build('Google');
@@ -20,7 +22,7 @@
        <div>
        <label class="control-label" for="">チェックイン</label>
        <div>
-      <%= f.datetime_select :start, {}, class: 'form-control bootstrap-date' %>
+      <%= f.datetime_select :start, {}, class: 'form-control bootstrap-date', :use_month_numbers => true %>
       </div>
    </div>
 
