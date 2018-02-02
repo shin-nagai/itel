@@ -1,45 +1,45 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 <div style='width: 375px;'>
-  <div id="map" style='width: 375px; height: 300px;'></div>
+   <div id="map" style='width: 375px; height: 300px;'></div>
 </div>
 
 <!-- <div id="map" class="img-responsive"></div> -->
 
 <script type="text/javascript">
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+   markers = handler.addMarkers(<%=raw @hash.to_json %>);
+   handler.bounds.extendWith(markers);
+   handler.fitMapToBounds();
+});
 </script>
-  <div class="wrapper-field">
-     <h4>倉庫名：<%= @warehouse.name %></h4>
-     <br>
-     <%= form_for @reservation do |f| %>
-      <%= f.text_field :warehouse_id, value: "#{params['id']}", class: 'hidden' %>
-       <!-- <label class="control-label" for="">荷物数</label> -->
-       <div>
-       <label class="control-label" for="">チェックイン</label>
-       <div>
-      <%= f.datetime_select :start, {}, class: 'form-control bootstrap-date', use_month_numbers: true %>
+<div class="wrapper-field">
+   <h4>倉庫名：<%= @warehouse.name %></h4>
+   <br>
+   <%= form_for @reservation do |f| %>
+   <%= f.text_field :warehouse_id, value: "#{params['id']}", class: 'hidden' %>
+   <!-- <label class="control-label" for="">荷物数</label> -->
+   <div>
+      <label class="control-label" for="">チェックイン</label>
+      <div>
+         <%= f.datetime_select :start, {}, class: 'form-control bootstrap-date', use_month_numbers: true %>
       </div>
    </div>
 
    <div>
-       <label class="control-label" for="">チェックアウト</label>
-        <div>
-          <%= f.datetime_select :end, {}, class: 'form-control bootstrap-date' %>
-         </div>
+      <label class="control-label" for="">チェックアウト</label>
+      <div>
+         <%= f.datetime_select :end, {}, class: 'form-control bootstrap-date' %>
+      </div>
 
-         <div class="wrapper-field">
+      <div class="wrapper-field">
          <%= f.submit "予約する", class: 'form-control btn btn-warning' %>
-         </div>
+      </div>
    </div>
    <% end %>
 
-  </div>
+</div>
 
 
 <!-- <%= link_to '編集する', edit_warehouse_path(@warehouse) %> | -->

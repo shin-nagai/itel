@@ -5,40 +5,40 @@
 </div>
 
 <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reservations.each do |reservation| %>
+   <thead>
       <tr>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <th colspan="3"></th>
+      </tr>
+   </thead>
+
+   <tbody>
+      <% @reservations.each do |reservation| %>
+      <tr>
+         <td><%= link_to 'Show', reservation %></td>
+         <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+         <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="" alt="">
-            <div class="caption wrapper-field">
-              <h4>倉庫名：<%= reservation.warehouse.name %></h4>
-              <p>チェックイン：<%= reservation.start.strftime("%Y年%m月%d日 %H時%M分") %></p>
-              <p>チェックアウト<%= reservation.end.strftime("%Y年%m月%d日 %H時%M分") %></p>
-              <p>
-                  <%= link_to '詳細へ', reservation , class: "btn btn-warning form-control", role: "button" %>
-               </p>
-               <p>
-                  <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-warning form-control", role: "button" %>
-              </p>
-              <br>
+         <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+               <img src="" alt="">
+               <div class="caption wrapper-field">
+                  <h4>倉庫名：<%= reservation.warehouse.name %></h4>
+                  <p>チェックイン：<%= reservation.start.strftime("%Y年%m月%d日 %H時%M分") %></p>
+                  <p>チェックアウト<%= reservation.end.strftime("%Y年%m月%d日 %H時%M分") %></p>
+                  <p>
+                     <%= link_to '詳細へ', reservation , class: "btn btn-warning form-control", role: "button" %>
+                  </p>
+                  <p>
+                     <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-warning form-control", role: "button" %>
+                  </p>
+                  <br>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    <% end %>
-  </tbody>
+      <% end %>
+   </tbody>
 </table>
 
 <br>

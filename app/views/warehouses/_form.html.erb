@@ -1,29 +1,29 @@
 <%= form_for @warehouse do |f| %>
-  <% if warehouse.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
+<% if warehouse.errors.any? %>
+<div id="error_explanation">
+   <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
 
-      <ul>
+   <ul>
       <% warehouse.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+   </ul>
+</div>
+<% end %>
 
 <div class="wrapper-field">
-  <%= f.label :倉庫名 %><br />
-  <%= f.text_field :name, class: "form-control"%>
- </div>
-  <div class="wrapper-field">
-  <%= f.label :住所 %><br />
-  <%= f.text_field :adress, class: "form-control" %>
-  </div>
-  <div class="wrapper-field">
-  <%= f.label :価格 %><br />
-  <%= f.number_field :price, class: "form-control" %>
-  </div>
-  <div class="center wrapper-field">
-  <%= f.submit "登録する", class: "btn btn-warning form-control" %>
-  </div>
+   <%= f.label :倉庫名 %><br />
+   <%= f.text_field :name, class: "form-control"%>
+</div>
+<div class="wrapper-field">
+   <%= f.label :住所 %><br />
+   <%= f.text_field :adress, class: "form-control" %>
+</div>
+<div class="wrapper-field">
+   <%= f.label :価格 %><br />
+   <%= f.number_field :price, class: "form-control" %>
+</div>
+<div class="center wrapper-field">
+   <%= f.submit "登録する", class: "btn btn-warning form-control" %>
+</div>
 <% end %>
