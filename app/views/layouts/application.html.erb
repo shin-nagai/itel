@@ -11,15 +11,22 @@
 </head>
 <navbar class="navbar navbar-default">
    <div class="container-fluid">
-      <!-- <img src="assets/logo-header.png" width="50%"> -->
-      <%= image_tag("logo-header.png", :width => "50%", :alt => "アイコン") %>
+      <h3>時間倉庫</h3>
+      <!-- <%= image_tag("logo-header.png", :width => "50%", :alt => "アイコン") %> -->
       <% if user_signed_in? %>
-      <div class="btn btn-warning">
-         <%= link_to 'ログアウト', '/users/sign_out', method: :delete %>
+      <div class="dropdown">
+         <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <%= current_user.email %>
+            <span class="caret"></span>
+         </button>
+         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a href="/users/<%= current_user.id %>">マイページ</a></li>
+            <li role="presentation"><%= link_to 'ログアウト', '/users/sign_out', method: :delete %></li>
+         </ul>
       </div>
       <% else %>
       <div class="btn btn-warning">
-         <%= link_to 'ログイン', '/users/signed_in', method: :post %>
+      <%= link_to 'ログイン', '/users/sign_in', method: :post %>
       </div>
       <% end %>
    </div>

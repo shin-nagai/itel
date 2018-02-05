@@ -1,0 +1,22 @@
+
+   <div class="wrapper-field">
+      <h1><%= @email %>さんの予約一覧</h1>
+   </div>
+   <% @reservations.each do |reservation| %>
+   <div class="caption wrapper-field">
+      <h4>倉庫名：<%= reservation.warehouse.name %></h4>
+      <p>チェックイン：<%= reservation.start.strftime("%Y年%m月%d日 %H時%M分") %></p>
+      <p>チェックアウト<%= reservation.end.strftime("%Y年%m月%d日 %H時%M分") %></p>
+      <p>
+         <%= link_to '詳細へ', reservation , class: "btn btn-warning form-control", role: "button" %>
+      </p>
+      <p>
+         <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-warning form-control", role: "button" %>
+      </p>
+      <p>
+         <%= link_to '取り消す', reservation, method: :delete, data: { confirm: '本当に予約を取り消しますか？'}, class: "btn btn-warning form-control", role: "button" %>
+      </p>
+      <br>
+   </div>
+   <% end %>
+   <%= paginate(@reservations) %>
