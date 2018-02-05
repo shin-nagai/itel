@@ -68,3 +68,5 @@ gem 'jquery-rails'
 gem 'paperclip'
 #日本語化
 gem 'rails-i18n'
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'

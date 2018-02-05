@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
    # GET /reservations
    # GET /reservations.json
    def index
-      @reservations = Reservation.all.order("created_at DESC")
+      @reservations = Reservation.all.order("created_at DESC").page(params[:page]).per(5)
       @warehouses = Warehouse.all
    end
 

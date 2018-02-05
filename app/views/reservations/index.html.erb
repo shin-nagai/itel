@@ -13,15 +13,15 @@
 
    <tbody>
       <% @reservations.each do |reservation| %>
-      <tr>
+      <!-- <tr>
          <td><%= link_to 'Show', reservation %></td>
          <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
          <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </tr> -->
       <div class="row">
          <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-               <img src="" alt="">
+               <!-- <img src="" alt=""> -->
                <div class="caption wrapper-field">
                   <h4>倉庫名：<%= reservation.warehouse.name %></h4>
                   <p>チェックイン：<%= reservation.start.strftime("%Y年%m月%d日 %H時%M分") %></p>
@@ -32,6 +32,9 @@
                   <p>
                      <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-warning form-control", role: "button" %>
                   </p>
+                  <p>
+                     <%= link_to '取り消す', reservation, method: :delete, data: { confirm: '本当に予約を取り消しますか？'}, class: "btn btn-warning form-control", role: "button" %>
+                  </p>
                   <br>
                </div>
             </div>
@@ -40,7 +43,7 @@
       <% end %>
    </tbody>
 </table>
-
-<br>
-
-<%= link_to 'さらに予約する', new_reservation_path %>
+<%= paginate(@reservations) %>
+<div class="wrapper-field">
+<%= link_to 'さらに予約する', new_reservation_path, class: "btn btn-warning form-control", role: "button" %>
+</div>
