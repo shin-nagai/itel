@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
    before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+   before_action :move_to_index, except: :index
 
    # GET /reservations
    # GET /reservations.json
@@ -72,5 +73,9 @@ class ReservationsController < ApplicationController
    # Never trust parameters from the scary internet, only allow the white list through.
    def reservation_params
       params.require(:reservation).permit(Reservation::REGISTRABLE).merge(user_id: 1, item_id: 1, warehouse_id: 1)
+   end
+
+   def move_to_index
+      redirect_to action: :index unless user_signed_in?
    end
 end
