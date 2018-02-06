@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    root to: 'root#index'
 
    devise_for :users
-   get   'users/:id'   =>  'users#show'    #Mypageへのルーティング
+   get   'users/mypage'   =>  'users#show'    #Mypageへのルーティング
    resources :reservations
    resources :warehouses
    resources :items
