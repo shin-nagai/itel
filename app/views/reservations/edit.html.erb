@@ -1,6 +1,18 @@
 <h1>Editing Reservation</h1>
 
-<%= render 'form', reservation: @reservation %>
+<!-- <%= render 'form', reservation: @reservation %> -->
+<div class="wrapper-field">
+   <%= form_tag("/reservations/#{@reseravtion.id}", method: :patch ) do %>
+   <h3>
+      編集する
+   </h3>
+   <!-- <input placeholder="Image Url" type="text" name="image" value="<%= @tweet.image %>" autofocus="true"> -->
+   <%= f.datetime_select :startdate, {}, class: 'form-control' %>
+   <%= f.datetime_select :enddate, {}, class: 'form-control' %>
+   <input type="submit" value="SENT">
+   <% end %>
+</div>
+
 
 <%= link_to 'Show', @reservation %> |
 <%= link_to 'Back', reservations_path %>

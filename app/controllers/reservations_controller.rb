@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
    # GET /reservations
    # GET /reservations.json
    def index
+      # n+1問題の解消のためにいつか変更
       @reservations = Reservation.all.order("created_at DESC").page(params[:page]).per(5)
       @warehouses = Warehouse.all
    end
@@ -21,6 +22,9 @@ class ReservationsController < ApplicationController
 
    # GET /reservations/1/edit
    def edit
+      @reservation = Reservation.find(params[:id])
+      starttime = @reservation.change_start(params)
+      endtime = @reservation.change_end(params)
    end
 
    # POST /reservations
@@ -44,7 +48,8 @@ class ReservationsController < ApplicationController
    # PATCH/PUT /reservations/1.json
    def update
       respond_to do |format|
-         if @reservation.update(reservation_params)
+         if Reservation.update(start: starttime, end: endtime, user_id: current_user.id, item_id: 1, warehouse_id: params.require(:reservation)['warehouse_id'])
+         # if @reservation.update(reservation_params)　元のコード
             format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
             format.json { render :show, status: :ok, location: @reservation }
          else

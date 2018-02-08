@@ -27,7 +27,8 @@
                      <%= link_to '詳細へ', reservation , class: "btn btn-warning form-control", role: "button" %>
                   </p>
                   <p>
-                     <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-warning form-control", role: "button" %>
+                     <!-- <%= link_to '編集する', edit_reservation_path(reservation), class: "btn btn-warning form-control", role: "button" %> -->
+                     <%= link_to '編集する', "/reservations/#{reservation.id}/edit", class: "btn btn-warning form-control", role: "button" %>
                   </p>
                   <p>
                      <%= link_to '取り消す', reservation, method: :delete, data: { confirm: '本当に予約を取り消しますか？'}, class: "btn btn-warning form-control", role: "button" %>
